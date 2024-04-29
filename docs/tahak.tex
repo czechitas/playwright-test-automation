@@ -1,0 +1,124 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor} % Add this line
+
+% Redefine \texttt to include a gray background
+\let\oldtexttt\texttt
+\renewcommand{\texttt}[1]{%
+  \colorbox{gray!30}{\oldtexttt{#1}}%
+}
+
+
+\title{Low-code Test Automation Framework}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Introduction}
+
+Framework for teaching the basics of low-code automation on projects of the Czechitas Digital Testing Academy.
+
+In its default state, after launching, the framework should start a web browser you have installed, without the need to download additional drivers. The assumption is that the user has one of the following web browsers installed: Firefox, Chrome, or Edge.
+
+A sample test in the \texttt{ExampleTest} class will open a web browser and verify that the address www.czechitas.cz is present in the contacts section of the testing application.
+
+\section*{Hierarchy of Elements}
+
+Working with the framework is divided according to elements of the testing application as follows:
+
+\subsection*{ApplicationAction}
+
+Allows you to work with application list:
+\begin{itemize}
+  \item \texttt{selectProgrammingSection()} - select \textit{Programming} course category
+  \item \texttt{clickCreateNewApplicationButton()} - create a new application once category is selected
+  \item \texttt{openFirstApplicationDetailsPage()} - open an existing application to see details
+  \item \texttt{search("Jan")} - search for an application from Jan
+  \item \texttt{clickEditFirstApplicationButton()} - open the first application to edit details
+\end{itemize}
+
+\subsection*{ApplicationDetail}
+
+Allows you to work with application details page:
+\begin{itemize}
+  \item \texttt{selectTerm(String term)} - select a term
+  \item \texttt{insertStudentFirstName("Jan")} - insert student first name
+  \item \texttt{insertStudentLastName("Novak")} - insert student first name
+  \item \texttt{insertBirthdate("01.01.2000")} - insert student day of birth
+  \item \texttt{insertNote("my personal note")} - insert a note
+  \item \texttt{selectCashPaymentMethod()} - choose cash payment method
+  \item \texttt{selectBankTransferPaymentMethod()} - choose bank transfer payment method
+  \item \texttt{clickAcceptTermsCheckbox()} - accept Terms and Conditions
+  \item \texttt{clickEditApplicationButton()} - save changes upon editing an application
+  \item \texttt{clickCreateApplicationButton()} - click the button to create an application once all the details are provided
+\end{itemize}
+
+\subsection*{InternalMenuAction}
+
+Allows you to work with internal menu upon logging in:
+\begin{itemize}
+  \item \texttt{goToOrdersSection()} - go to Objednavky section
+  \item \texttt{goToTermsSection()} - go to Terminy section
+  \item \texttt{goToApplicationsSection()} - go to Prihlasky section
+  \item \texttt{goToCategoriesSection()} - go to Kategorie section
+  \item \texttt{goToNewsSection()} - go to Aktuality section
+  \item \texttt{goToExportsSection()} - go to Exporty section
+\end{itemize}
+
+\subsection*{LoginAction}
+
+Allows you to login and logout:
+\begin{itemize}
+  \item \texttt{clickLoginMenuLink()} - click login link in top menu (top right corner)
+  \item \texttt{insertEmail("test@czechitas.cz"); insertPassword("mySecurePass123")} - insert email and password
+  \item \texttt{clickLoginButton()} - click login button once credentials are provided
+  \item \texttt{logout()} - logout
+\end{itemize}
+
+\subsection*{ProfileAction}
+
+Allows you to work with customer profile:
+\begin{itemize}
+  \item \texttt{goToProfilePage()} - open profile page from top menu
+  \item \texttt{insertPassword("new password")} - enter a new password. Change "new password" to the one you like based on security requirements (lowercase and uppercase letters, numbers, etc)
+  \item \texttt{insertPasswordVerification("new password")} - enter a password to confirm
+  \item \texttt{clickChangeButton()} - click the button to save changes
+\end{itemize}
+
+\subsection*{PublicMenuAction}
+
+Allows you to work with top level menu in page header:
+\begin{itemize}
+  \item \texttt{goToContactsSection()} - go to Kontakt section
+  \item \texttt{goToHomePage()} - go to Domu page
+  \item \texttt{goToInstructionsAndFormsForTeacherSection()} - go to Navody a Formulare pro ucitele
+  \item \texttt{goToKindergartenAndSchoolSection()} - go to Objednávka pro MŠ/ZŠ
+  \item \texttt{goToInstructionsAndFormsForParentSection()} - go to Navody a Formulare pro rodice
+  \item \texttt{goToCreateApplicationSection()} - create an application from top header menu (Pro rodice -> Vytvorit prihlasku)
+\end{itemize}
+
+\section*{Assertions}
+
+\textbf{Application list} - verification steps you can do on the list view
+\begin{itemize}
+  \item \texttt{checkColumnExists("Akce")} - check if \textit{Akce} column is visible on the page
+  \item \texttt{checkApplicationsTableIsEmpty()} - ensure the application list is empty (\textit{Žádné záznamy nenalezeny} message is displayed)
+  \item \texttt{checkNumberOfApplications(5)} - ensure the application list has exactly 5 applications
+\end{itemize}
+
+\textbf{Application detail view} - verification steps you can do on the detail view
+\begin{itemize}
+  \item \texttt{checkPaymentMethod("Bankovní převod")} - ensure the application is paid through a bank transfer
+  \item \texttt{checkFirstName("Jan")} - check that the student first name is \textit{Jan}
+  \item \texttt{checkLastName("Novak")} - check that the student first name is \textit{Novak}
+  \item \texttt{checkDateOfBirth("01.01.2010")} - check that the student date of birth is \textit{01.01.2010}
+  \item \texttt{checkNote("myPrivateNote")} - check that the note is \textit{myPrivateNote}
+  \item \texttt{checkRemainingAmountToPay("100.00")} - check that remaining amount to pay is \textit{100.00} Kč
+  \item \texttt{checkTerm("05.02. - 09.02.2024")} - check that the term is \textit{05.02. - 09.02.2024}
+  \item \texttt{checkMessageContainsStudentLastName("Novak")} - ensure that \textit{Zpráva pro příjemce} contains student last name \textit{Novak}
+\end{itemize}
+
+\end{document}

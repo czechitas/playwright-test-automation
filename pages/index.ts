@@ -28,7 +28,7 @@ export class AllPages {
     this.applicationDetailPage = new ApplicationDetailPage(page);
   }
 
-  public async visitPage(url?: string): Promise<void> {
-    await this.page.goto(url || "https://datoj24.czechhackitas.cz/");
+  public async visitPage(): Promise<void> {
+    await this.page.goto("/");
   }
 }

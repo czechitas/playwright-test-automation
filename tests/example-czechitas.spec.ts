@@ -19,10 +19,10 @@ test.describe("Example test class for functionality showcase", () => {
   });
 
   test("successfulLoginTest", async () => {
-    await pages.loginSection.clickLoginMenuLink();
-    await pages.loginSection.insertEmail("da-app.admin@czechitas.cz");
-    await pages.loginSection.insertPassword("Czechitas123");
-    await pages.loginSection.clickLoginButton();
+    await pages.loginPage.clickLoginMenuLink();
+    await pages.loginPage.insertEmail("da-app.admin@czechitas.cz");
+    await pages.loginPage.insertPassword("Czechitas123");
+    await pages.loginPage.clickLoginButton();
     await asserter.checkIsLoggedIn();
   });
 
@@ -34,7 +34,7 @@ test.describe("Example test class for functionality showcase", () => {
     icos.forEach((icoValue) => {
       test(`testing ICO value: ${icoValue}`, async () => {
         await pages.headerMenu.goToKindergartenAndSchoolSection();
-        await pages.orderSection.insertICO(icoValue);
+        await pages.orderPage.insertICO(icoValue);
         // Add any assertions or checks if necessary, assuming some validation or outcome needs to be verified
       });
     });

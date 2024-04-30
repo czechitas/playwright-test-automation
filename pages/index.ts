@@ -1,31 +1,31 @@
 import { Page } from "playwright";
-import { PublicMenuPage } from "./public-menu-action";
-import { ProfilePage } from "./profile-action";
-import { OrderPage } from "./order-action";
-import { LoginPage } from "./login-action";
-import { InternalMenuPage } from "./internal-menu-action";
-import { ApplicationActions } from "./application-actions";
+import { PublicMenu } from "./public-menu";
+import { ProfilePage } from "./profile-page";
+import { OrderPage } from "./order-page";
+import { LoginPage } from "./login-page";
+import { InternalMenu } from "./internal-menu";
+import { MainPage } from "./main-page";
 import { ApplicationDetailPage } from "./aplication-detail-page";
 
 export class AllPages {
-  public headerMenu: PublicMenuPage;
-  public profileSection: ProfilePage;
-  public orderSection: OrderPage;
-  public loginSection: LoginPage;
-  public internalMenu: InternalMenuPage;
-  public applicationSection: ApplicationActions;
-  public applicationDetailSection: ApplicationDetailPage;
+  public headerMenu: PublicMenu;
+  public profilePage: ProfilePage;
+  public orderPage: OrderPage;
+  public loginPage: LoginPage;
+  public internalMenu: InternalMenu;
+  public mainPage: MainPage;
+  public applicationDetailPage: ApplicationDetailPage;
   private page: Page;
 
   constructor(page: Page) {
     this.page = page;
-    this.headerMenu = new PublicMenuPage(page);
-    this.profileSection = new ProfilePage(page);
-    this.orderSection = new OrderPage(page);
-    this.loginSection = new LoginPage(page);
-    this.internalMenu = new InternalMenuPage(page);
-    this.applicationSection = new ApplicationActions(page);
-    this.applicationDetailSection = new ApplicationDetailPage(page);
+    this.headerMenu = new PublicMenu(page);
+    this.profilePage = new ProfilePage(page);
+    this.orderPage = new OrderPage(page);
+    this.loginPage = new LoginPage(page);
+    this.internalMenu = new InternalMenu(page);
+    this.mainPage = new MainPage(page);
+    this.applicationDetailPage = new ApplicationDetailPage(page);
   }
 
   public async visitPage(url?: string): Promise<void> {

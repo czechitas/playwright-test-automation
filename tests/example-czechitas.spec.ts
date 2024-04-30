@@ -1,21 +1,18 @@
 import { test } from "@playwright/test";
 import { AllPages } from "../pages";
-import { Assertions } from "../assetions/assertation";
 
 test.describe("Example test class for functionality showcase", () => {
   let pages: AllPages;
-  let asserter: Assertions;
 
   test.beforeEach(async ({ page }) => {
     pages = new AllPages(page);
-    asserter = new Assertions(page);
 
     await pages.visitPage();
   });
 
   test("contactsPageUrlTest", async () => {
     await pages.headerMenu.goToContactsSection();
-    await asserter.checkPageUrl("www.czechitas.cz");
+    await pages.mainPage.checkPageUrl("www.czechitas.cz");
   });
 
   test("successfulLoginTest", async () => {
@@ -23,7 +20,7 @@ test.describe("Example test class for functionality showcase", () => {
     await pages.loginPage.insertEmail("da-app.admin@czechitas.cz");
     await pages.loginPage.insertPassword("Czechitas123");
     await pages.loginPage.clickLoginButton();
-    await asserter.checkIsLoggedIn();
+    await pages.loginPage.checkIsLoggedIn();
   });
 
   // Parameterized test - using test.describe for parameterization

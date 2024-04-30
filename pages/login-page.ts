@@ -1,4 +1,4 @@
-import { type Page, type Locator } from "@playwright/test";
+import { expect, type Page, type Locator } from "@playwright/test";
 
 export class LoginPage {
   readonly page: Page;
@@ -8,6 +8,7 @@ export class LoginPage {
   readonly loginButton: Locator;
   readonly userMenu: Locator;
   readonly logoutButton: Locator;
+  readonly loggedInText: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -19,6 +20,7 @@ export class LoginPage {
       '//*[@id="navbarSupportedContent"]/div[2]/div/a'
     );
     this.logoutButton = page.locator('//*[@id="logout-link"]');
+    this.loggedInText = page.locator(".navbar-right span");
   }
 
   async clickLoginMenuLink() {
@@ -40,5 +42,10 @@ export class LoginPage {
   async logout() {
     await this.userMenu.click();
     await this.logoutButton.click();
+  }
+
+  async checkIsLoggedIn(): Promise<void> {
+    const loggedInText = await this.loggedInText.textContent();
+    expect(loggedInText).toBe("Přihlášen");
   }
 }

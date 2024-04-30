@@ -25,7 +25,7 @@ export class ApplicationDetailPage {
     this.createButton = page.locator("//input[@type='submit']");
     this.inCashPaymentRadio = page.locator("//label[@for='payment_cash']");
     this.bankTransferPaymentButton = page.locator(
-      "//label[@for='payment_transfer']"
+      "//label[@for='payment_transfer']",
     );
     this.editButton = page.locator("//input[@value='Upravit přihlášku']");
   }
@@ -33,7 +33,7 @@ export class ApplicationDetailPage {
   async selectTerm(term: string) {
     await this.termSelectorButton.click();
     await this.page.click(
-      `//div[starts-with(@id,'bs-select')]//span[contains(text(), '${term}')]`
+      `//div[starts-with(@id,'bs-select')]//span[contains(text(), '${term}')]`,
     );
   }
 
@@ -75,49 +75,49 @@ export class ApplicationDetailPage {
 
   async checkPaymentMethod(paymentMethod: string) {
     const paymentMethodText = await this.page.textContent(
-      "//table/tbody//td[text()='Způsoby úhrady kurzu:']/..//strong"
+      "//table/tbody//td[text()='Způsoby úhrady kurzu:']/..//strong",
     );
     expect(paymentMethodText).toBe(paymentMethod);
   }
 
   async checkFirstName(firstname: string) {
     const firstNameText = await this.page.textContent(
-      "//table/tbody//td[text()='Křestní jméno žáka:']/../td[2]"
+      "//table/tbody//td[text()='Křestní jméno žáka:']/../td[2]",
     );
     expect(firstNameText).toBe(firstname);
   }
 
   async checkLastName(lastname: string) {
     const lastNameText = await this.page.textContent(
-      "//table/tbody//td[text()='Příjmení žáka:']/../td[2]"
+      "//table/tbody//td[text()='Příjmení žáka:']/../td[2]",
     );
     expect(lastNameText).toBe(lastname);
   }
 
   async checkDateOfBirth(birthdate: string) {
     const birthDateText = await this.page.textContent(
-      "//table/tbody//td[text()='Datum narození žáka:']/../td[2]"
+      "//table/tbody//td[text()='Datum narození žáka:']/../td[2]",
     );
     expect(birthDateText).toBe(birthdate);
   }
 
   async checkNote(note: string) {
     const noteText = await this.page.textContent(
-      "//table/tbody//td[text()='Poznámka:']/../td[2]"
+      "//table/tbody//td[text()='Poznámka:']/../td[2]",
     );
     expect(noteText).toBe(note);
   }
 
   async checkRemainingAmountToPay(paymentAmount: string) {
     const amountText = await this.page.textContent(
-      "//table/tbody//td[text()='Zbývá uhradit']/..//strong"
+      "//table/tbody//td[text()='Zbývá uhradit']/..//strong",
     );
     expect(amountText).toBe(paymentAmount);
   }
 
   async checkMessageContainsStudentLastName(lastname: string) {
     const recipientMessageText = await this.page.textContent(
-      "//table/tbody//td[text()='Zpráva pro příjemce']/../td[2]"
+      "//table/tbody//td[text()='Zpráva pro příjemce']/../td[2]",
     );
     expect(recipientMessageText).toContain(lastname);
   }

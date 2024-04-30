@@ -23,7 +23,5 @@ test.describe("Nazev features co testujes, nebo komponenty. Co testujes", () => 
     // Napriklad kliknuti na nejaky element, napsani do inputu, atd.
     // Nezapomen na await, protoze vsechny akce jsou asynchronni a musis pockat na jejich dokonceni (javascript vec, neresime vic)
     // napr. await pages.headerMenu.goToContactsSection();
-
-    
   });
 });

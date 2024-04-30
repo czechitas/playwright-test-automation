@@ -12,22 +12,22 @@ export class InternalMenu {
   constructor(page: Page) {
     this.page = page;
     this.ordersSection = page.locator(
-      "//*[@id='adminNavbar']//a[contains(text(), 'Objednávky')]"
+      "//*[@id='adminNavbar']//a[contains(text(), 'Objednávky')]",
     );
     this.termsSection = page.locator(
-      "//*[@id='adminNavbar']//a[contains(text(), 'Termíny')]"
+      "//*[@id='adminNavbar']//a[contains(text(), 'Termíny')]",
     );
     this.applicationsSection = page.locator(
-      "//*[@id='adminNavbar']//a[contains(text(), 'Přihlášky')]"
+      "//*[@id='adminNavbar']//a[contains(text(), 'Přihlášky')]",
     );
     this.categoriesSection = page.locator(
-      "//*[@id='adminNavbar']//a[contains(text(), 'Kategorie')]"
+      "//*[@id='adminNavbar']//a[contains(text(), 'Kategorie')]",
     );
     this.newsSection = page.locator(
-      "//*[@id='adminNavbar']//a[contains(text(), 'Aktuality')]"
+      "//*[@id='adminNavbar']//a[contains(text(), 'Aktuality')]",
     );
     this.exportsSection = page.locator(
-      "//*[@id='adminNavbar']//a[contains(text(), 'Exporty')]"
+      "//*[@id='adminNavbar']//a[contains(text(), 'Exporty')]",
     );
   }
 

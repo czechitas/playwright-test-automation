@@ -11,10 +11,10 @@ export class ProfilePage {
   constructor(page: Page) {
     this.page = page;
     this.loggedInUserMenu = page.locator(
-      "//*[@id='navbarSupportedContent']//a[@class='dropdown-toggle']"
+      "//*[@id='navbarSupportedContent']//a[@class='dropdown-toggle']",
     );
     this.profileMenuOption = page.locator(
-      "//*[@id='navbarSupportedContent']//a[contains(text(), 'Profil')]"
+      "//*[@id='navbarSupportedContent']//a[contains(text(), 'Profil')]",
     );
     this.passwordInput = page.locator("//*[@id='password']");
     this.passwordConfirmInput = page.locator("//*[@id='password-confirm']");

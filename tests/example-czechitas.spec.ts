@@ -1,4 +1,4 @@
-import { test } from "@playwright/test";
+import { test, expect } from "@playwright/test";
 import { AllPages } from "../pages";
 
 test.describe("Example test class for functionality showcase", () => {
@@ -12,10 +12,11 @@ test.describe("Example test class for functionality showcase", () => {
 
   test("contactsPageUrlTest", async () => {
     await pages.headerMenu.goToContactsSection();
+    
     await pages.mainPage.checkPageUrl("www.czechitas.cz");
   });
 
-  test("successfulLoginTest", async () => {
+  test("When valid creadentials provided then user is logged in", async () => {
     await pages.loginPage.clickLoginMenuLink();
     await pages.loginPage.insertEmail("da-app.admin@czechitas.cz");
     await pages.loginPage.insertPassword("Czechitas123");

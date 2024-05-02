@@ -1,10 +1,13 @@
 import { expect, type Locator, type Page } from "@playwright/test";
+import { NavigationBar } from "../components/navigation-bar";
 
 /**
  * Represents the navigation bar component.
  */
 export class ContactPage {
   readonly page: Page;
+  readonly navigationBar: NavigationBar;
+
   readonly headerH1: Locator;
   readonly card: Locator;
   readonly cardTitle: Locator;
@@ -15,7 +18,8 @@ export class ContactPage {
 
   constructor(page: Page) {
     this.page = page;
-
+    this.navigationBar = new NavigationBar(page);
+  
     const header = page.locator(".header_img");
     const content = page.locator("div.main_content");
 

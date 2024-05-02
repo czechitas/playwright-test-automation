@@ -10,13 +10,10 @@ test.describe("Example test class for functionality showcase", () => {
     await pages.visitPage();
   });
 
-  test("When user navigates to Contacts section then user is navigated to czechitas url", async () => {
+  test("contactsPageUrlTest", async () => {
     await pages.headerMenu.goToContactsSection();
-
-    const actualPageUrl = await pages.mainPage.pageUrl.textContent();
-    const expectedPageUrl = "www.czechitas.cz";
-
-    await expect(actualPageUrl).toBe(expectedPageUrl);
+    
+    await pages.mainPage.checkPageUrl("www.czechitas.cz");
   });
 
   test("When valid creadentials provided then user is logged in", async () => {

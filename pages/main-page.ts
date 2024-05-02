@@ -78,6 +78,11 @@ export class MainPage {
     expect(applicationsCountText).toContain(expectedText);
   }
 
+  async checkPageUrl(url: string): Promise<void> {
+    const urlText = await this.pageUrl.textContent();
+    expect(urlText).toBe(url);
+  }
+
   async checkProgrammingSectionPresence(): Promise<void> {
     const programmingText = await this.programmingSection.textContent();
     if (!programmingText) {

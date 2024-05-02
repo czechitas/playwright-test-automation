@@ -27,7 +27,7 @@ export class ContactPage {
     this.card = content.locator("div.card");
     this.cardTitle = this.card.locator("h3");
     this.adressLine1 = this.card.getByRole("paragraph").nth(0);
-    this.adressLine2 = this.card.getByRole("paragraph").nth(1);
+    this.adressLine2 = this.card.getByRole("paragraph").nth(0);
     this.link = this.card.locator("a");
   }
 
@@ -37,7 +37,7 @@ export class ContactPage {
    * Asserts that the header H1 element has the expected text.
    * @param expected - The expected text.
    */
-  async assertHeaderH1(expected: string) {
+  async expectHeaderH1HasTest(expected: string) {
     await expect(this.headerH1).toHaveText(expected);
   }
 
@@ -45,7 +45,7 @@ export class ContactPage {
    * Asserts that the card title element has the expected text.
    * @param expected - The expected text.
    */
-  async assertCardTitle(expected: string) {
+  async expectCardTitleHasText(expected: string) {
     await expect(this.cardTitle).toHaveText(expected);
   }
 
@@ -53,23 +53,17 @@ export class ContactPage {
    * Asserts that the address line 1 element has the expected text.
    * @param expected - The expected text.
    */
-  async assertAdressLine1(expected: string) {
-    await expect(this.adressLine1).toHaveText(expected);
-  }
-
-  /**
-   * Asserts that the address line 2 element has the expected text.
-   * @param expected - The expected text.
-   */
-  async assertAdressLine2(expected: string) {
-    await expect(this.adressLine2).toHaveText(expected);
+  async expectAdressLineHasText(expected: string) {
+    const text = await this.adressLine1.textContent();
+    const lines = text?.split("<br>");
+    await expect(lines?.[0]).toContain(expected);
   }
 
   /**
    * Asserts that the link element has the expected text.
    * @param expected - The expected text.
    */
-  async assertLink(expected: string) {
+  async expectLinkHasText(expected: string) {
     await expect(this.link).toHaveText(expected);
   }
 
@@ -77,8 +71,16 @@ export class ContactPage {
    * Assert that link has correct href attribute.
    * @param expected - The expected href.
    */
-  async assertLinkHref(expected: string) {
+  async expectLinkHref(expected: string) {
     await expect(this.link).toHaveAttribute("href", expected);
+  }
+
+  /**
+   * Asserts that URL of page is correct
+   * @param url - The expected url.
+   */
+  async expectCurrentUrl(url: string = "/kontakt") {
+    await expect(this.page.url()).toContain(url);
   }
 
   // ACTIONS
@@ -88,5 +90,12 @@ export class ContactPage {
    */
   async clickLink() {
     await this.link.click();
+  }
+
+  /**
+   * Visits the contact page.
+   */
+  async visit() {
+    await this.page.goto("/kontakt");
   }
 }

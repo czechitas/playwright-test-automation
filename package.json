@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "npx playwright test --reporter=list",
+    "test:headed": "npx playwright test --headed",
     "test:codegen": "npx playwright codegen https://datoj24.czechhackitas.cz/",
-    "test:ui": "npx playwright test --ui ./tests/**.spec.ts",
+    "test:ui": "npx playwright test --ui",
     "format": "prettier --write ."
   },
   "keywords": [],

@@ -10,17 +10,10 @@ test.describe("Example test class for functionality showcase", () => {
     await pages.visitPage();
   });
 
-  test("contactsPageUrlTest", async () => {
-    await pages.headerMenu.goToContactsSection();
-    await pages.mainPage.checkPageUrl("www.czechitas.cz");
-  });
-
   test("successfulLoginTest", async () => {
-    await pages.loginPage.clickLoginMenuLink();
-    await pages.loginPage.insertEmail("da-app.admin@czechitas.cz");
-    await pages.loginPage.insertPassword("Czechitas123");
-    await pages.loginPage.clickLoginButton();
-    await pages.loginPage.checkIsLoggedIn();
+    await pages.loginPage.visit();
+    await pages.loginPage.login("vojta.cerveny@czechitas.cz", "Hello123456");
+    await pages.loginPage.navigationBar.expectUserIsLogged();
   });
 
   // Parameterized test - using test.describe for parameterization

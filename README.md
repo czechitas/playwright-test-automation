@@ -1,4 +1,5 @@
 # Prerequisites
+
 First you should check if you have playwright installed globally.
 
 `npm list -g`
@@ -11,6 +12,7 @@ You also want to install browsers so framework can run tests against them (chrom
 `npx playwright install --with-deps chromium`
 
 # How to start the tests locally
+
 Start by downloading the required packages
 
 `npm install`

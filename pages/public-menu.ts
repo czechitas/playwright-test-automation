@@ -14,33 +14,19 @@ export class PublicMenu {
 
   constructor(page: Page) {
     this.page = page;
-    this.contactsSection = page.locator(
-      "//div[@id='navbarSupportedContent']//a[contains(text(), 'Kontakt')]",
-    );
-    this.forTeacherMenuItem = page.locator(
-      "//*[@id='navbarSupportedContent']//a[contains(text(), 'Pro učitelé')]",
-    );
+    this.contactsSection = page.locator("//div[@id='navbarSupportedContent']//a[contains(text(), 'Kontakt')]");
+    this.forTeacherMenuItem = page.locator("//*[@id='navbarSupportedContent']//a[contains(text(), 'Pro učitelé')]");
     this.instructionsFormsTeacher = page.locator(
       "//*[@id='navbarSupportedContent']//a[contains(text(), 'Pro učitelé')]//..//a[text()='Návody a formuláře']",
     );
-    this.kindergartenSchoolOrder = page.locator(
-      "//*[@id='navbarSupportedContent']//a[text()='Objednávka pro MŠ/ZŠ']",
-    );
-    this.forParentMenuItem = page.locator(
-      "//*[@id='navbarSupportedContent']//a[contains(text(), 'Pro rodiče')]",
-    );
+    this.kindergartenSchoolOrder = page.locator("//*[@id='navbarSupportedContent']//a[text()='Objednávka pro MŠ/ZŠ']");
+    this.forParentMenuItem = page.locator("//*[@id='navbarSupportedContent']//a[contains(text(), 'Pro rodiče')]");
     this.instructionsFormsParent = page.locator(
       "//*[@id='navbarSupportedContent']//a[contains(text(), 'Pro rodiče')]//..//a[text()='Návody a formuláře']",
     );
-    this.createApplication = page.locator(
-      "//*[@id='navbarSupportedContent']//a[text()='Vytvořit přihlášku']",
-    );
-    this.homeSection = page.locator(
-      "//div[@id='navbarSupportedContent']//a[contains(text(), 'Domů')]",
-    );
-    this.applicationsSection = page.locator(
-      "//*[@id='navbarSupportedContent']//a[contains(text(), 'Přihlášky')]",
-    );
+    this.createApplication = page.locator("//*[@id='navbarSupportedContent']//a[text()='Vytvořit přihlášku']");
+    this.homeSection = page.locator("//div[@id='navbarSupportedContent']//a[contains(text(), 'Domů')]");
+    this.applicationsSection = page.locator("//*[@id='navbarSupportedContent']//a[contains(text(), 'Přihlášky')]");
   }
 
   async goToContactsSection() {

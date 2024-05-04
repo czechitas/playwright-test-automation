@@ -2,10 +2,11 @@ import { Page } from "playwright";
 import { PublicMenu } from "./public-menu";
 import { ProfilePage } from "./profile-page";
 import { OrderPage } from "./order-page";
-import { LoginPage } from "./login-page";
+import { LoginPage } from "./new-structure/pages/login-page";
 import { InternalMenu } from "./internal-menu";
 import { MainPage } from "./main-page";
 import { ApplicationDetailPage } from "./aplication-detail-page";
+import { RegistrationPage } from "./new-structure/pages/registration-page";
 
 export class AllPages {
   public headerMenu: PublicMenu;
@@ -15,6 +16,7 @@ export class AllPages {
   public internalMenu: InternalMenu;
   public mainPage: MainPage;
   public applicationDetailPage: ApplicationDetailPage;
+  public registrationPage: RegistrationPage;
   private page: Page;
 
   constructor(page: Page) {
@@ -26,6 +28,7 @@ export class AllPages {
     this.internalMenu = new InternalMenu(page);
     this.mainPage = new MainPage(page);
     this.applicationDetailPage = new ApplicationDetailPage(page);
+    this.registrationPage = new RegistrationPage(page);
   }
 
   public async visitPage(): Promise<void> {

@@ -1,4 +1,4 @@
-import { test } from "@playwright/test";
+import { test, expect } from "@playwright/test";
 import { AllPages } from "../pages";
 
 test.describe("Example test class for functionality showcase", () => {

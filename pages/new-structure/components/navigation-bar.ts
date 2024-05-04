@@ -30,34 +30,34 @@ export class NavigationBar {
   constructor(page: Page) {
     this.page = page;
 
-    const nav = page.locator("nav");
-    this.logo = nav.locator("a.navbar-brand");
-    this.home = nav.locator("a.nav-link", { hasText: "Domů" });
-    this.forParents = nav.locator("a.nav-link", { hasText: "Pro rodiče" });
-    this.tutorialsForParents = nav.locator("a.dropdown-item", {
+    const navBar = page.locator("nav");
+    this.logo = navBar.locator("a.navbar-brand");
+    this.home = navBar.locator("a.nav-link", { hasText: "Domů" });
+    this.forParents = navBar.locator("a.nav-link", { hasText: "Pro rodiče" });
+    this.tutorialsForParents = navBar.locator("a.dropdown-item", {
       hasText: "Návody a formuláře",
     });
-    this.createRegistrationForParrent = nav.locator("a.dropdown-item", {
+    this.createRegistrationForParrent = navBar.locator("a.dropdown-item", {
       hasText: "Vytvořit přihlášku",
     });
 
     // this is kinda typo? "Pro učitelé" instead of "Pro učitele"
-    this.forTearchers = nav.locator("a.nav-link", { hasText: "Pro učitelé" });
-    this.tutorialsForTeachers = nav.locator("a.dropdown-item", {
+    this.forTearchers = navBar.locator("a.nav-link", { hasText: "Pro učitelé" });
+    this.tutorialsForTeachers = navBar.locator("a.dropdown-item", {
       hasText: "Návody a formuláře",
     });
-    this.createRegistrationForTeachers = nav.locator("a.dropdown-item", {
+    this.createRegistrationForTeachers = navBar.locator("a.dropdown-item", {
       hasText: "Objednávka pro MŠ/ZŠ",
     });
 
-    this.contact = nav.locator("a.nav-link", { hasText: "Kontakt" });
-    this.signInButton = nav.locator("a.nav-link", { hasText: "Přihlásit" });
+    this.contact = navBar.locator("a.nav-link", { hasText: "Kontakt" });
+    this.signInButton = navBar.locator("a.nav-link", { hasText: "Přihlásit" });
 
     // LOGGED
-    this.userIsLogged = nav.locator("a.nav-item", { hasText: "Přihlášen" });
+    this.userIsLogged = navBar.locator("div.nav-item", { hasText: "Přihlášen" });
     this.profileButton = this.userIsLogged.locator("a");
-    this.profileDropdownItem = nav.locator("a.dropdown-item", { hasText: "Profil" });
-    this.logoutDropdownItem = nav.locator("a.dropdown-item", { hasText: "Odhlásit" });
+    this.profileDropdownItem = navBar.locator("a.dropdown-item", { hasText: "Profil" });
+    this.logoutDropdownItem = navBar.locator("a.dropdown-item", { hasText: "Odhlásit" });
   }
 
   /**

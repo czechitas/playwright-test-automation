@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx playwright test --reporter=list ./tests/**.spec.ts",
+    "test": "npx playwright test --reporter=list",
     "test:codegen": "npx playwright codegen https://datoj24.czechhackitas.cz/",
     "test:ui": "npx playwright test --ui ./tests/**.spec.ts",
     "format": "prettier --write ."

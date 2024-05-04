@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx playwright test --reporter=list ./tests/**.spec.ts"
+    "test": "npx playwright test --reporter=list ./tests/**.spec.ts",
+    "test:codegen": "npx playwright codegen https://datoj24.czechhackitas.cz/",
+    "test:ui": "npx playwright test --ui ./tests/**.spec.ts",
+    "format": "prettier --write ."
   },
   "keywords": [],
   "author": "",
@@ -14,6 +17,7 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.41.2",
-    "@types/node": "^20.11.17"
+    "@types/node": "^20.11.17",
+    "prettier": "^3.2.5"
   }
 }

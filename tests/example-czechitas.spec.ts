@@ -6,8 +6,6 @@ test.describe("Ukazkova test suita ve ktere najdes ruzne zpusoby jak a co je moz
   let pages: AllPages;
   let validLoginUsername = process.env.VALID_LOGIN_USERNAME as string;
   let validLoginPassword = process.env.VALID_LOGIN_PASSWORD as string;
-  let validRegistrationUsername = process.env.VALID_REGISTRATION_USERNAME as string;
-  let validRegistrationPassword = process.env.VALID_REGISTRATION_PASSWORD as string;
 
   test.beforeEach(async ({ page }) => {
     pages = new AllPages(page);
@@ -36,7 +34,11 @@ test.describe("Ukazkova test suita ve ktere najdes ruzne zpusoby jak a co je moz
   // Parameterized test - using test.describe for parameterization
   test.describe.parallel("icoFieldTest", () => {
     // List of test values
-    const icos = ["123456789", "ASDFBVC", "123"];
+    const icos = [
+      "123456789", 
+      "ASDFBVC", 
+      "123"
+    ];
 
     icos.forEach((icoValue) => {
       test(`testing ICO value: ${icoValue}`, async () => {
@@ -45,5 +47,7 @@ test.describe("Ukazkova test suita ve ktere najdes ruzne zpusoby jak a co je moz
         // Add any assertions or checks if necessary, assuming some validation or outcome needs to be verified
       });
     });
+    
   });
+
 });

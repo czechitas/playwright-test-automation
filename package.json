@@ -8,6 +8,7 @@
     "test:headed": "npx playwright test --headed",
     "test:codegen": "npx playwright codegen https://datoj24.czechhackitas.cz/",
     "test:ui": "npx playwright test --ui",
+    "test:report": "PW_TEST_HTML_REPORT_OPEN=always npx playwright test --reporter=list,html",
     "format": "prettier --write ."
   },
   "keywords": [],

@@ -14,7 +14,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "playwright": "^1.41.2"
+    "playwright": "^1.41.2",
+    "dotenv": "^16.4.5"
   },
   "devDependencies": {
     "@playwright/test": "^1.41.2",

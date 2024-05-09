@@ -7,6 +7,7 @@ import { InternalMenu } from "./internal-menu";
 import { ApplicationsPage } from "./main-page";
 import { ApplicationDetailPage } from "./aplication-detail-page";
 import { RegistrationPage } from "./new-structure/pages/registration-page";
+import { ForgotPasswordPage } from "./new-structure/pages/forgot-password-page";
 
 export class AllPages {
   public headerMenu: PublicMenu;
@@ -17,6 +18,7 @@ export class AllPages {
   public applicationsPage: ApplicationsPage;
   public applicationDetailPage: ApplicationDetailPage;
   public registrationPage: RegistrationPage;
+  public forgotPasswordPage: ForgotPasswordPage;
   private page: Page;
 
   constructor(page: Page) {
@@ -29,6 +31,7 @@ export class AllPages {
     this.applicationsPage = new ApplicationsPage(page);
     this.applicationDetailPage = new ApplicationDetailPage(page);
     this.registrationPage = new RegistrationPage(page);
+    this.forgotPasswordPage = new ForgotPasswordPage(page);
   }
 
   public async visitPage(): Promise<void> {

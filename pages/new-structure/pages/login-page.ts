@@ -23,10 +23,13 @@ export class LoginPage {
     this.emailInput = page.locator("input#email");
     this.passwordInput = page.locator("input#password");
     this.submitButton = page.locator("button", { hasText: "Přihlásit" });
-    this.forgotPasswordLink = page.locator("a", { hasText: "Zapomněli jste své heslo?" });
+    this.forgotPasswordLink = page.locator("a", {
+      hasText: "Zapomněli jste své heslo?",
+    });
 
     this.registerButton = page.locator("a", { hasText: "Zaregistrujte se" });
 
+    this.errorFeedback = page.locator("span.invalid-feedback");
     this.errorToast = page.locator("div.toast");
   }
 

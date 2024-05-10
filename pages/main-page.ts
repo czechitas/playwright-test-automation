@@ -6,6 +6,7 @@ export class ApplicationsPage {
   readonly createNewApplicationButton: Locator;
   readonly programmingSection: Locator;
   readonly createApplicationButton: Locator;
+  readonly registrationForPythonCourseButton: Locator;
   readonly firstApplicationDetailsPage: Locator;
   readonly searchInput: Locator;
   readonly editFirstApplicationButton: Locator;
@@ -17,6 +18,7 @@ export class ApplicationsPage {
     this.createNewApplicationButton = this.page.locator(".card-header a");
     this.programmingSection = this.page.locator("//*[contains(text(), 'Programování')]//ancestor::*[@class='card']//a");
     this.createApplicationButton = this.page.locator(".card-body a");
+    this.registrationForPythonCourseButton = this.page.locator("div.card-body.d-flex.flex-column.justify-content-between").locator("//a[@href='https://datoj24.czechhackitas.cz/zaci/pridat/139-python']");
     this.firstApplicationDetailsPage = this.page.locator("//tr[1]//a[@title='Zobrazit']");
     this.searchInput = this.page.locator("//input[@type='search']");
     this.editFirstApplicationButton = this.page.locator("//tr[1]//a[@title='Upravit']");
@@ -34,6 +36,10 @@ export class ApplicationsPage {
 
   async clickCreateApplicationButton() {
     await this.createApplicationButton.click();
+  }
+
+  async clickRegistrationForPythonButton() {
+    await this.registrationForPythonCourseButton.click();
   }
 
   async openFirstApplicationDetailsPage() {

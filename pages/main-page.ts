@@ -42,7 +42,7 @@ export class ApplicationsPage {
     await this.registrationForPythonCourseButton.click();
   }
 
-  async createPythonCourseRegistration() {
+  async navigateToPythonCourseRegistration() {
     await this.clickCreateNewApplicationButton();
     await this.selectProgrammingSection();
     await this.clickRegistrationForPythonButton();

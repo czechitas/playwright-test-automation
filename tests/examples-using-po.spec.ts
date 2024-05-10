@@ -30,7 +30,7 @@ test.describe("Ukazkova test suita ve ktere najdes par zakladnich testu", () => 
     await pages.loginPage.login(validLoginUsername, validLoginPassword);
 
     // when
-    await pages.applicationsPage.createPythonCourseRegistration();
+    await pages.applicationsPage.navigateToPythonCourseRegistration();
     await pages.courseRegistrationPage.createCourseRegistration("Pepíček", "Malíček", "12.12.2012");
         
     // then
@@ -43,7 +43,7 @@ test.describe("Ukazkova test suita ve ktere najdes par zakladnich testu", () => 
     await pages.loginPage.login(validLoginUsername, validLoginPassword);
 
     // when
-    await pages.applicationsPage.createPythonCourseRegistration();
+    await pages.applicationsPage.navigateToPythonCourseRegistration();
     await pages.courseRegistrationPage.createCourseRegistration("Pepíček", "Malíček", "12.12.2032");
         
     // then
@@ -57,7 +57,7 @@ test.describe("Ukazkova test suita ve ktere najdes par zakladnich testu", () => 
     await pages.loginPage.login(validLoginUsername, validLoginPassword);
 
     // when
-    await pages.applicationsPage.createPythonCourseRegistration();
+    await pages.applicationsPage.navigateToPythonCourseRegistration();
     await pages.courseRegistrationPage.createCourseRegistration("Pepíček", "Malíček", "12.12.2020");
         
     // then

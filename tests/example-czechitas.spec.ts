@@ -13,7 +13,7 @@ test.describe("Ukazkova test suita ve ktere najdes ruzne zpusoby jak a co je moz
     await pages.visitPage();
   });
 
-  test("successfulLoginTest", async () => {
+  test("Login of an existing user is successful", async () => {
     await pages.loginPage.visit();
     await pages.loginPage.login(validLoginUsername, validLoginPassword);
     await pages.loginPage.navigationBar.expectUserIsLogged();

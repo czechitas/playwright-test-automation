@@ -23,9 +23,10 @@ test.describe("Ukazkova test suita ve ktere najdes ruzne zpusoby jak a co je moz
     // given
     const userApi = new UserApi(page);
     const username = createRandomUsername(3);
+    const password = createRandomUsername(6);
 
     // when
-    const response = await userApi.registerUser(username, username);    
+    const response = await userApi.registerUser(username, password);    
     
     // then
     expect(response.status()).toBe(201);

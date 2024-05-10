@@ -5,7 +5,7 @@ export class LoginPage {
   readonly page: Page;
   readonly navigationBar: NavigationBar;
 
-  readonly emailInput: Locator;
+  readonly usernameInput: Locator;
   readonly passwordInput: Locator;
   readonly submitButton: Locator;
   readonly forgotPasswordLink: Locator;
@@ -20,7 +20,7 @@ export class LoginPage {
 
     this.navigationBar = new NavigationBar(page);
 
-    this.emailInput = page.locator("input#email");
+    this.usernameInput = page.locator("input#username");
     this.passwordInput = page.locator("input#password");
     this.submitButton = page.locator("button", { hasText: "Přihlásit" });
     this.forgotPasswordLink = page.locator("a", {
@@ -37,14 +37,14 @@ export class LoginPage {
     await this.page.goto("/prihlaseni");
   }
 
-  async login(email: string, password: string) {
-    await this.fillEmail(email);
+  async login(username: string, password: string) {
+    await this.fillUsername(username);
     await this.fillPassword(password);
     await this.submitButton.click();
   }
 
-  async fillEmail(email: string) {
-    await this.emailInput.fill(email);
+  async fillUsername(username: string) {
+    await this.usernameInput.fill(username);
   }
 
   async fillPassword(password: string) {
@@ -72,6 +72,6 @@ export class LoginPage {
   }
 
   async expectWarningAroundEmailInput() {
-    await expect(this.emailInput).toHaveClass("form-control is-invalid");
+    await expect(this.usernameInput).toHaveClass("form-control is-invalid");
   }
 }

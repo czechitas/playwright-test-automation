@@ -1,19 +1,16 @@
 import { expect, test } from "@playwright/test";
 
-test.describe("Ukazkova test suita ve ktere najdes par zakladnich testu", () => {
+// pouzij only aby se pustily pouze testy v teto test suite
+test.describe.only("Ukazkova test suita ve ktere najdes par zakladnich testu", () => {
   let validLoginUsername = process.env.VALID_LOGIN_USERNAME as string;
   let validLoginPassword = process.env.VALID_LOGIN_PASSWORD as string;
-
-  test.beforeEach(async ({ page }) => {
-    
-  });
 
   test("Prihlaseni existujiciho uzivatele", async ({ page }) => {
     // given
     await page.goto("/prihlaseni");
 
     // when
-    await page.locator("input#email").fill(validLoginUsername);
+    await page.locator("input#username").fill(validLoginUsername);
     await page.locator("input#password").fill(validLoginPassword);
     await page.locator("button", { hasText: "Přihlásit" }).click();
 
@@ -24,7 +21,7 @@ test.describe("Ukazkova test suita ve ktere najdes par zakladnich testu", () => 
   test("Vytvoreni prihlasky", async ({ page }) => {
     // given
     await page.goto("/prihlaseni");    
-    await page.locator("input#email").fill(validLoginUsername);
+    await page.locator("input#username").fill(validLoginUsername);
     await page.locator("input#password").fill(validLoginPassword);
     await page.locator("button", { hasText: "Přihlásit" }).click();
 
@@ -36,7 +33,7 @@ test.describe("Ukazkova test suita ve ktere najdes par zakladnich testu", () => 
     await page.locator("//button[@role='combobox']").click();
     await page.locator("a#bs-select-1-0").click();
     
-    await page.locator("input#forename").fill("Pepíček");
+    await page.locator("input#firstname").fill("Pepíček");
     await page.locator("input#surname").fill("Malíček");
     await page.locator("input#birthday").fill("12.12.2012");
     
@@ -51,7 +48,7 @@ test.describe("Ukazkova test suita ve ktere najdes par zakladnich testu", () => 
   test("Vytvoreni prihlasky s jeste nenarozenym ditetem", async ({ page }) => {
     // given
     await page.goto("/prihlaseni");    
-    await page.locator("input#email").fill(validLoginUsername);
+    await page.locator("input#username").fill(validLoginUsername);
     await page.locator("input#password").fill(validLoginPassword);
     await page.locator("button", { hasText: "Přihlásit" }).click();
 
@@ -63,7 +60,7 @@ test.describe("Ukazkova test suita ve ktere najdes par zakladnich testu", () => 
     await page.locator("//button[@role='combobox']").click();
     await page.locator("a#bs-select-1-0").click();
     
-    await page.locator("input#forename").fill("Pepíček");
+    await page.locator("input#firstname").fill("Pepíček");
     await page.locator("input#surname").fill("Malíček");
     await page.locator("input#birthday").fill("12.12.2032");
     
@@ -79,7 +76,7 @@ test.describe("Ukazkova test suita ve ktere najdes par zakladnich testu", () => 
   test("Vytvoreni prihlasky s prilis mladym ditetem", async ({ page }) => {
     // given
     await page.goto("/prihlaseni");    
-    await page.locator("input#email").fill(validLoginUsername);
+    await page.locator("input#username").fill(validLoginUsername);
     await page.locator("input#password").fill(validLoginPassword);
     await page.locator("button", { hasText: "Přihlásit" }).click();
 
@@ -91,7 +88,7 @@ test.describe("Ukazkova test suita ve ktere najdes par zakladnich testu", () => 
     await page.locator("//button[@role='combobox']").click();
     await page.locator("a#bs-select-1-0").click();
     
-    await page.locator("input#forename").fill("Pepíček");
+    await page.locator("input#firstname").fill("Pepíček");
     await page.locator("input#surname").fill("Malíček");
     await page.locator("input#birthday").fill("12.12.2020");
     

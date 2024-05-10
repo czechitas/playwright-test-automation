@@ -6,7 +6,7 @@ export class CourseRegistrationPage {
 
   readonly termDropdown: Locator;
   readonly termFirstOption: Locator;
-  readonly forenameTextbox: Locator;
+  readonly firstnameTextbox: Locator;
   readonly surnameTextbox: Locator;
   readonly birthdayTextbox: Locator;
 
@@ -16,12 +16,14 @@ export class CourseRegistrationPage {
   readonly cashRadio: Locator;
   readonly termsConditionsCheckbox: Locator;
   readonly createCourseRegistrationButton: Locator;
+  readonly birthdayValidationMessage: Locator;
+  readonly messageToast: Locator;
   
   constructor(page: Page) {
     this.page = page;
     this.termDropdown = this.page.locator("//button[@role='combobox']");
     this.termFirstOption = this.page.locator("a#bs-select-1-0");
-    this.forenameTextbox = this.page.locator("input#forename");
+    this.firstnameTextbox = this.page.locator("input#firstname");
     this.surnameTextbox = this.page.locator("input#surname");
     this.birthdayTextbox = this.page.locator("input#birthday");
     this.bankTransferRadio = this.page.getByText("Bankovní převod");
@@ -30,6 +32,8 @@ export class CourseRegistrationPage {
     this.cashRadio = this.page.getByText("Hotově");
     this.termsConditionsCheckbox = this.page.getByText("Souhlasím s všeobecnými podmínkami a zpracováním osobních údajů.");
     this.createCourseRegistrationButton = this.page.locator("input.btn");
+    this.birthdayValidationMessage = this.page.locator("span.invalid-feedback", { hasText: "Žák musí dovršit 4 roky nejpozději v den začátku kurzu" });
+    this.messageToast = this.page.locator("div.toast-message");
   }
 
   async clickTermDropdown() {
@@ -40,8 +44,8 @@ export class CourseRegistrationPage {
     await this.termFirstOption.click();
   }
 
-  async fillForename(forename: string) {
-    await this.forenameTextbox.fill(forename);
+  async fillFirstname(firstname: string) {
+    await this.firstnameTextbox.fill(firstname);
   }
 
   async fillSurname(surname: string) {
@@ -62,6 +66,31 @@ export class CourseRegistrationPage {
 
   async clickCreateCourseRegistrationButton() {
     await this.createCourseRegistrationButton.click();
+  }
+
+  async createCourseRegistration(firstname: string, surname: string, birthday: string) {
+    await this.clickTermDropdown();
+    await this.selectTermFirstOption();
+    await this.fillFirstname(firstname);
+    await this.fillSurname(surname);
+    await this.fillBirthday(birthday);
+    await this.clickBankTransferRadio();
+    await this.clickTermsConditionsCheckbox();
+    await this.clickCreateCourseRegistrationButton();
+  }
+
+  async assertBirthdayValidationMessageIsVisible(): Promise<void> {
+    await expect(this.birthdayValidationMessage).toBeVisible();
+  }
+
+  async assertMessageToastIsVisibleAndContainsError(): Promise<void> {
+    await expect(this.messageToast).toBeVisible();
+    await expect(this.messageToast).toHaveText("Některé pole obsahuje špatně zadanou hodnotu");
+  }
+
+  async assertMessageToastDisplaysSuccess(): Promise<void> {
+    await expect(this.messageToast).toBeVisible();
+    await expect(this.messageToast).toContainText("byl úspěšně vytvořen");
   }
 
 }
